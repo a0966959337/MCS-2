@@ -97,4 +97,6 @@ while True:
 				{"dataChnId":"Temperature","values":{"value":t0}},
 				{"dataChnId":"SwitchStatus","values":{"value":SwitchStatus}}]} 
 			post_to_mcs(payload)
+			time.sleep(1) 
+			humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 			print('Button released')
