@@ -23,6 +23,7 @@ import sys
 import time
 import Adafruit_DHT
 import json
+import httplib
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -72,7 +73,7 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 # guarantee the timing of calls to read the sensor).
 # If this happens try again!
 while True:
-	SwitchStatus = CPIO.input(24)
+	SwitchStatus = GPIO.input(24)
 	if(SwitchStatus ==0):
 		print('Button pressed')
 		h0, t0= Adafruit_DHT.read_retry(sensor, pin)
